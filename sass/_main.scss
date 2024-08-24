@@ -1,0 +1,351 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(68, 58, 58, 0.507);
+    z-index: 1000;
+    display: none;
+}
+
+.main {
+    max-width: rem(1100);
+    margin: rem(70) auto;
+
+    @include breakpointDown(desktop) {
+        max-width: 98%;
+    }
+
+    @include breakpointDown(tablet) {
+        max-width: 78%;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: rem(32);
+
+        @include breakpointDown(tablet) {
+            grid-template-columns: 1fr;
+        }
+
+        .header {
+            font-size: rem(36);
+            padding-bottom: rem(30);
+            font-weight: 700;
+        }
+
+        &-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: rem(24);
+            justify-content: center;
+            align-items: center;
+
+            @include breakpointDown(tablet) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @include breakpointDown(mobile) {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                background: #fff;
+                border-radius: rem(10);
+                position: relative;
+                width: 100%;
+                height: rem(200);
+                margin-bottom: rem(110);
+
+                .card-img {
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    border-radius: rem(10);
+                    margin-bottom: rem(40);
+                }
+
+                .waffle-img {
+                    background-image: url('../assets/images/image-waffle-desktop.jpg');
+                }
+
+                .creme-img {
+                    background-image: url('../assets/images/image-creme-brulee-desktop.jpg');
+                }
+
+                .macaron-img {
+                    background-image: url('../assets/images/image-macaron-desktop.jpg');
+                }
+
+                .tiramisu-img {
+                    background-image: url('../assets/images/image-tiramisu-desktop.jpg');
+                }
+
+                // .creme-img {
+                //     background-image: url('../assets/images/image-creme-brulee-desktop.jpg');
+                // }
+
+                .baklava-img {
+                    background-image: url('../assets/images/image-baklava-desktop.jpg');
+                }
+
+                .pie-img {
+                    background-image: url('../assets/images/image-meringue-desktop.jpg');
+                }
+
+                .cake-img {
+                    background-image: url('../assets/images/image-cake-desktop.jpg');
+                }
+
+                .brownie-img {
+                    background-image: url('../assets/images/image-brownie-desktop.jpg');
+                }
+
+                .panana-img {
+                    background-image: url('../assets/images/image-panna-cotta-desktop.jpg');
+                }
+
+                .add-cart-btn,
+                .quantity-controls {
+                    position: absolute;
+                    bottom: -22px;
+                    left: 50%;
+                    transform: translate(-50%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+
+                }
+
+                .quantity-controls {
+                    display: none;
+                }
+
+                .active {
+                    border: 2px solid $red;
+
+                    .quantity-controls {
+                        background: $red;
+                        color: $Rose-100;
+                        justify-content: space-between;
+
+                        img {
+                            padding: 5px;
+                            border: 1px solid $Rose-50;
+                            border-radius: 50%;
+                            width: 18px;
+                            height: 18px;
+                            margin: 0 10px;
+                        }
+                    }
+                }
+
+                .description {
+                    .name {
+                        font-size: 15px;
+                        font-weight: 400;
+                        color: $Rose-500;
+                    }
+
+                    .title {
+                        font-size: rem(16);
+                        font-weight: 600;
+                        color: $Rose-900;
+                    }
+
+
+                }
+            }
+        }
+
+        .cart {
+            background-color: #fff;
+            padding: rem(30) rem(25);
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);
+
+
+            #total {
+                display: none;
+            }
+
+            .cart-title {
+                color: $red;
+                font-size: rem(26);
+                font-weight: 700;
+                padding-bottom: rem(22);
+            }
+
+            .flex {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 18px 0;
+
+
+                .cart-name {
+                    color: $Rose-900;
+                    font-size: rem(16);
+                    font-weight: 700;
+                    padding-bottom: 5px;
+                }
+
+                .price__container {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 10px;
+                    font-weight: 400;
+
+
+                    p {
+                        color: $Rose-500;
+                        font-size: 14px;
+                    }
+                }
+
+                .remove-item {
+                    border: 2px solid $Rose-300;
+                    border-radius: 50%;
+                    width: 20px;
+                    height: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: border-color .3s ease-in;
+
+                    &:hover {
+                        border-color: $Rose-500;
+                        cursor: pointer;
+                    }
+
+                    img {
+                        width: 10px;
+                    }
+                }
+            }
+
+        }
+
+        .message {
+            background: $Rose-50;
+            padding: rem(16);
+            border-radius: 8px;
+            margin-bottom: rem(20);
+            font-size: 15px;
+
+            img {
+                margin-right: 5px;
+            }
+
+        }
+
+
+
+        .empty-cart {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .text {
+                color: $Rose-500;
+            }
+        }
+    }
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: rem(590);
+    background: #fff;
+    padding: rem(40);
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    transform: translateY(-1000%);
+    transition: transform 0.4s ease-in;
+
+    .lead {
+        color: $Rose-500;
+        padding-bottom: rem(32);
+    }
+
+    &.active {
+        transform: translate(-50%, -50%);
+    }
+
+    .order {
+        background: $Rose-100;
+        padding: rem(15);
+        border-radius: 10px;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: rem(15) 0;
+
+        &.border {
+            border-color: $Rose-50 !important;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            gap: rem(15);
+
+            .price-content {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                .price {
+                    color: $Rose-500;
+                }
+            }
+
+            .item-name {
+                color: $Rose-900;
+                font-size: rem(16);
+                font-weight: 700;
+                padding-bottom: 5px;
+            }
+
+
+            img {
+                width: rem(50);
+                height: rem(50);
+                border-radius: 10px;
+            }
+        }
+
+        .price-value {
+            color: $Rose-500;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .total-price {
+            font-weight: 700;
+            font-size: rem(26);
+            color: $Rose-900;
+        }
+    }
+
+
+    .btn {
+        margin-top: rem(30);
+    }
+}
