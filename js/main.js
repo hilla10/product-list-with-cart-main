@@ -147,6 +147,8 @@ function generateHtml(cartQuantity, itemName, itemPrice, itemCount, parent) {
         </div>
       </div>
     `;
+    const removeItemElms = document.querySelectorAll('.remove-item');
+    removeItem(removeItemElms);
   }
 
   // Calculate the total ordered price and update the totalPriceElm
@@ -250,14 +252,25 @@ confirm.addEventListener('click', () => {
 
 const startNew = document.querySelector('#start-new');
 startNew.addEventListener('click', () => {
+  unsetValues();
+});
+
+function removeItem(items) {
+  items.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.target.parentElement.parentElement.remove();
+    });
+  });
+}
+
+function unsetValues() {
   const quantityControls = document.querySelectorAll('.quantity-controls');
-  modal.classList.remove('active');
   total.style.display = 'none';
   order.innerHTML = '';
   orderedItem.innerHTML = '';
   emptyCart.style.display = 'block';
   cartTitle.innerHTML = 'Your Cart(0)';
-
+  modal.classList.remove('active');
   cardImgs.forEach((cardImg) => {
     cardImg.classList.remove('active');
   });
@@ -265,4 +278,4 @@ startNew.addEventListener('click', () => {
   quantityControls.forEach((quantityControl) => {
     quantityControl.style.display = 'none';
   });
-});
+}
